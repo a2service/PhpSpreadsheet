@@ -457,7 +457,7 @@ class Chart extends WriterPart
         $objWriter->endElement();
 
         $objWriter->startElement('c:axPos');
-        $objWriter->writeAttribute('val', $yAxis->getAxisOptionsProperty('position'));
+        $objWriter->writeAttribute('val', $yAxis->getAxisOptionsProperty('position') ?: 'b');
         $objWriter->endElement();
 
         if ($xAxisLabel !== null) {
@@ -594,7 +594,7 @@ class Chart extends WriterPart
         $objWriter->endElement();
 
         $objWriter->startElement('c:axPos');
-        $objWriter->writeAttribute('val', $xAxis->getAxisOptionsProperty('position'));
+        $objWriter->writeAttribute('val', $xAxis->getAxisOptionsProperty('position') ?: 'l');
         $objWriter->endElement();
 
         $objWriter->startElement('c:majorGridlines');

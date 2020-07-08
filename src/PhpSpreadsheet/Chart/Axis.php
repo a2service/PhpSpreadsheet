@@ -36,7 +36,7 @@ class Axis extends Properties
         'axis_labels' => self::AXIS_LABELS_NEXT_TO,
         'horizontal_crosses' => self::HORIZONTAL_CROSSES_AUTOZERO,
         'horizontal_crosses_value' => null,
-        'position' => 'b',
+        'position' => null,
         'delete' => 0,
     ];
 
