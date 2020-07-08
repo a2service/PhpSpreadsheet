@@ -991,7 +991,7 @@ class Chart extends WriterPart
 
         if ($id1 > 0) {
             $objWriter->startElement('c:crossAx');
-            $objWriter->writeAttribute('val', $id1);
+            $objWriter->writeAttribute('val', $id2);
             $objWriter->endElement();
 
             if ($xAxis->getAxisOptionsProperty('horizontal_crosses_value') !== null) {
@@ -1204,39 +1204,9 @@ class Chart extends WriterPart
                 if ($groupType == DataSeries::TYPE_STOCKCHART) {
                     $objWriter->startElement('a:noFill');
                     $objWriter->endElement();
-                } else { // Write line fill color
-                    $fillColor = $plotSeriesValues->getFillColor();
-                    if (!empty($fillColor)) {
-                        $objWriter->startElement('a:solidFill');
-                        $objWriter->startElement('a:srgbClr');
-                        $objWriter->writeAttribute('val', is_array($fillColor) ? $fillColor[0] : $fillColor);
-                        $objWriter->endElement();
-                        $objWriter->endElement();
-                    }
                 }
 
                 $objWriter->endElement();
-                $objWriter->endElement();
-            }
-
-            //    Write fill color for barcharts
-            if ($groupType == DataSeries::TYPE_BARCHART) {
-                $objWriter->startElement('c:spPr');
-
-                $objWriter->startElement('a:ln');
-                $objWriter->startElement('a:noFill');
-                $objWriter->endElement();
-                $objWriter->endElement();
-
-                $fillColor = $plotSeriesValues->getFillColor();
-                if (!empty($fillColor)) {
-                    $objWriter->startElement('a:solidFill');
-                    $objWriter->startElement('a:srgbClr');
-                    $objWriter->writeAttribute('val', is_array($fillColor) ? $fillColor[0] : $fillColor);
-                    $objWriter->endElement();
-                    $objWriter->endElement();
-                }
-
                 $objWriter->endElement();
             }
 
