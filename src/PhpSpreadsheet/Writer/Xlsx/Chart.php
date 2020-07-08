@@ -1205,7 +1205,6 @@ class Chart extends WriterPart
                     $objWriter->startElement('a:noFill');
                     $objWriter->endElement();
                 }
-
                 $objWriter->endElement();
                 $objWriter->endElement();
             }
