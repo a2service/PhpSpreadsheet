@@ -85,6 +85,34 @@ class Chart
     private $xAxis;
 
     /**
+     * Secondary X-Axis Label.
+     *
+     * @var ?Title
+     */
+    private $secondaryXAxisLabel;
+
+    /**
+     * Secondary Y-Axis Label.
+     *
+     * @var ?Title
+     */
+    private $secondaryYAxisLabel;
+
+    /**
+     * Secondary Chart Asix X as.
+     *
+     * @var ?Axis
+     */
+    private $secondaryXAxis;
+
+    /**
+     * Secondary Chart Asix Y as.
+     *
+     * @var ?Axis
+     */
+    private $secondaryYAxis;
+
+    /**
      * Top-Left Cell Position.
      *
      * @var string
@@ -164,7 +192,7 @@ class Chart
      * @param mixed $plotVisibleOnly
      * @param string $displayBlanksAs
      */
-    public function __construct($name, ?Title $title = null, ?Legend $legend = null, ?PlotArea $plotArea = null, $plotVisibleOnly = true, $displayBlanksAs = DataSeries::EMPTY_AS_GAP, ?Title $xAxisLabel = null, ?Title $yAxisLabel = null, ?Axis $xAxis = null, ?Axis $yAxis = null, ?GridLines $majorGridlines = null, ?GridLines $minorGridlines = null)
+    public function __construct($name, ?Title $title = null, ?Legend $legend = null, ?PlotArea $plotArea = null, $plotVisibleOnly = true, $displayBlanksAs = DataSeries::EMPTY_AS_GAP, ?Title $xAxisLabel = null, ?Title $yAxisLabel = null, ?Axis $xAxis = null, ?Axis $yAxis = null, ?GridLines $majorGridlines = null, ?GridLines $minorGridlines = null, ?Title $secondaryXAxisLabel = null, ?Title $secondaryYAxisLabel = null, ?Axis $secondaryXAxis = null, ?Axis $secondaryYAxis = null)
     {
         $this->name = $name;
         $this->title = $title;
@@ -184,6 +212,11 @@ class Chart
         }
         $this->fillColor = new ChartColor();
         $this->borderLines = new GridLines();
+
+        $this->secondaryXAxisLabel = $secondaryXAxisLabel;
+        $this->secondaryYAxisLabel = $secondaryYAxisLabel;
+        $this->secondaryXAxis = $secondaryXAxis;
+        $this->secondaryYAxis = $secondaryYAxis;
     }
 
     /**
@@ -380,6 +413,78 @@ class Chart
     public function setChartAxisX(?Axis $axis): self
     {
         $this->xAxis = $axis ?? new Axis();
+
+        return $this;
+    }
+
+    /**
+     * Get Secondary X-Axis Label.
+     */
+    public function getSecondaryXAxisLabel(): ?Title
+    {
+        return $this->secondaryXAxisLabel;
+    }
+
+    /**
+     * Set Secondary X-Axis Label.
+     */
+    public function setSecondaryXAxisLabel(Title $label): self
+    {
+        $this->secondaryXAxisLabel = $label;
+
+        return $this;
+    }
+
+    /**
+     * Get Secondary Y-Axis Label.
+     */
+    public function getSecondaryYAxisLabel(): ?Title
+    {
+        return $this->secondaryYAxisLabel;
+    }
+
+    /**
+     * Set Secondary Y-Axis Label.
+     */
+    public function setSecondaryYAxisLabel(Title $label): self
+    {
+        $this->secondaryYAxisLabel = $label;
+
+        return $this;
+    }
+
+    /**
+     * Get Secondary xAxis.
+     */
+    public function getChartSecondaryAxisX(): ?Axis
+    {
+        return $this->secondaryXAxis;
+    }
+
+    /**
+     * Set Secondary xAxis.
+     */
+    public function setChartSecondaryAxisX(Axis $axis): self
+    {
+        $this->secondaryXAxis = $axis;
+
+        return $this;
+    }
+
+    /**
+     * Get Secondary yAxis.
+     */
+    public function getChartSecondaryAxisY(): ?Axis
+    {
+        return $this->secondaryYAxis;
+    }
+
+    /**
+     * Set Secondary yAxis.
+     */
+    public function setChartSecondaryAxisY(Axis $axis): self
+    {
+        $this->secondaryYAxis = $axis;
 
         return $this;
     }

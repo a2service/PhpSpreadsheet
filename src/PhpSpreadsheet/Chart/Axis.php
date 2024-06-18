@@ -76,6 +76,7 @@ class Axis extends Properties
         'majorTimeUnit' => self::TIME_UNIT_YEARS,
         'minorTimeUnit' => self::TIME_UNIT_MONTHS,
         'baseTimeUnit' => self::TIME_UNIT_DAYS,
+        'position' => null,
     ];
 
     /**
@@ -161,7 +162,8 @@ class Axis extends Properties
         ?string $hidden = null,
         ?string $baseTimeUnit = null,
         ?string $majorTimeUnit = null,
-        ?string $minorTimeUnit = null
+        ?string $minorTimeUnit = null,
+        ?string $position = null
     ): void {
         $this->axisOptions['axis_labels'] = $axisLabels;
         $this->setAxisOption('horizontal_crosses_value', $horizontalCrossesValue);
@@ -178,6 +180,7 @@ class Axis extends Properties
         $this->setAxisOption('baseTimeUnit', $baseTimeUnit);
         $this->setAxisOption('majorTimeUnit', $majorTimeUnit);
         $this->setAxisOption('minorTimeUnit', $minorTimeUnit);
+        $this->setAxisOption('position', $position);
     }
 
     /**
